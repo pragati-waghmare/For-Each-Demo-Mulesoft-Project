@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="25fb088f-0d99-43c4-a89f-0658eb3d80b5" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="for-each-demoFlow" doc:id="91cb34b3-1dbf-41c7-b7a7-c6348b5a6851" >
+		<http:listener doc:name="Listener" doc:id="94f08339-d15d-4b33-b15f-512e52ee9e4c" config-ref="HTTP_Listener_config" path="/demo"/>
+		<logger level="INFO" doc:name="Logger" doc:id="a28dfb55-27df-498c-9c10-7c6e805729ad" message='#["----------------start " ++ flow.name as String ++ "--------------------"]' />
+		<set-payload value="#[[5,10,15,20,25,30,35,40,45,50]]" doc:name="Set Payload" doc:id="98a98770-f654-46d3-b813-792b65819d48" />
+		<logger level="INFO" doc:name="Logger1" doc:id="32577a99-fec4-4da4-9229-2904f5944db2" message="#[payload]" />
+		<set-variable value="#[[]]" doc:name="Set Variable" doc:id="90ea5cda-46c2-4548-b59b-afea545fc07b" variableName="resultVar" />
+		<foreach doc:name="For Each" doc:id="435d69a7-278c-4359-8f5f-76e0887feba5" batchSize="2" >
+			<ee:transform doc:name="Transform Message" doc:id="583a7edd-a566-405b-ae3a-ce1ab5c76756" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload map (item) -> item * 2]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+			<set-variable value="#[output application/json&#10;---&#10;vars.resultVar + (payload)]" doc:name="Set Variable" doc:id="62f28add-1897-46b9-9c07-8225af567007" variableName="resultVar" />
+			<logger level="INFO" doc:name="Logger" doc:id="6d2879e6-ce04-4cae-937e-2b5fafba180f" message="#[vars.resultVar]" />
+		</foreach>
+		<ee:transform doc:name="Transform Message" doc:id="24f52b23-ea27-4a1e-b8e3-aa146334976b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+vars.resultVar]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="7db8c7b3-bd0b-4166-a308-8d7fd50a313a" message="#[payload]"/>
+	</flow>
+</mule>
