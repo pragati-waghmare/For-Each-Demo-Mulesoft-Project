@@ -45,25 +45,26 @@
 				<configuration>
 
 					<cloudhub2Deployment>
-
-						<uri>https://anypoint.mulesoft.com</uri>
-
-						<provider>MC</provider>
-
-						<environment>${env}</environment>
-
-						<businessGroup>${business}</businessGroup>
-
-						<applicationName>${appname}</applicationName>
-
-						<target>${target}</target>
-
-						<muleVersion>${mule.version}</muleVersion>
-						<vCores>${vCore}</vCores>
-						<replicas>${workers}</replicas>
-
-					</cloudhub2Deployment>
-
+					    <uri>https://anypoint.mulesoft.com</uri>
+					    <provider>MC</provider>
+					
+					    <environment>${env}</environment>
+					    <businessGroup>${business}</businessGroup>
+					
+					    <applicationName>${appname}</applicationName>
+					    <target>${target}</target>
+					
+					    <muleVersion>${mule.version}</muleVersion>
+					
+					    <replicas>${workers}</replicas>
+					    <vCores>${vCore}</vCores>
+					
+					    <deploymentSettings>
+					        <server>anypoint-platform</server>
+					    </deploymentSettings>
+				    
+    				</cloudhub2Deployment>
+    
 				</configuration>
 
 			</plugin>
