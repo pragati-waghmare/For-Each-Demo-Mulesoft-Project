@@ -47,6 +47,9 @@
 					<cloudhub2Deployment>
 					    <uri>https://anypoint.mulesoft.com</uri>
 					    <provider>MC</provider>
+					    
+					     <username>${anypoint.username}</username>
+    					 <password>${anypoint.password}</password>
 					
 					    <environment>${env}</environment>
 					    <businessGroup>${business}</businessGroup>
