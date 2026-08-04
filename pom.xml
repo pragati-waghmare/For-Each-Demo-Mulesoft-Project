@@ -4,7 +4,7 @@
 
 	<groupId>d2d8da1e-4ebb-4c6b-a7ad-ce4f98df1aeb</groupId>
 	<artifactId>for-each-demo</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<packaging>mule-application</packaging>
 
 	<name>for-each-demo</name>
