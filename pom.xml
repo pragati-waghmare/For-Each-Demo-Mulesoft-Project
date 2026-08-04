@@ -58,10 +58,6 @@
 					
 					    <replicas>${workers}</replicas>
 					    <vCores>${vCore}</vCores>
-					
-					    <deploymentSettings>
-					        <server>anypoint-platform</server>
-					    </deploymentSettings>
 				    
     				</cloudhub2Deployment>
     
