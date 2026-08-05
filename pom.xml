@@ -58,9 +58,8 @@
 					    <target>${target}</target>
 					    
 					    <releaseChannel>Edge</releaseChannel>
-					    <muleVersion>4.12.1</muleVersion>
+					    <muleVersion>4.12.1:4e</muleVersion>
 					    
-					    <releaseChannel>LTS</releaseChannel>
 
     					<javaVersion>17</javaVersion>
 					
