@@ -58,6 +58,10 @@
 					    <target>${target}</target>
 					
 					    <muleVersion>${mule.version}</muleVersion>
+					    
+					    <releaseChannel>LTS</releaseChannel>
+
+    					<javaVersion>17</javaVersion>
 					
 					    <replicas>${workers}</replicas>
 					    <vCores>${vCore}</vCores>
