@@ -56,8 +56,9 @@
 					
 					    <applicationName>${appname}</applicationName>
 					    <target>${target}</target>
-					
-					    <muleVersion>${mule.version}</muleVersion>
+					    
+					    <releaseChannel>Edge</releaseChannel>
+					    <muleVersion>4.12.1</muleVersion>
 					    
 					    <releaseChannel>LTS</releaseChannel>
 
